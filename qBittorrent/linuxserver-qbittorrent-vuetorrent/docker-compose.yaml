@@ -1,0 +1,17 @@
+qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=022
+      - WEBUI_PORT=9090
+      - DOCKER_MODS=arafatamim/linuxserver-io-mod-vuetorrent
+    volumes:
+      - /vuetorrent/config:/config
+      - /vuetorrent/Downloads:/downloads
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 9090:9090
+    restart: unless-stopped
